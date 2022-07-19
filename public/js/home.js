@@ -42,7 +42,7 @@ if(response){
     }
 }
 
-
+/*
 let bank = prompt('Ingrese su banco y le contamos los descuentos exclusivos que tenemos el día de hoy para vos :)');
 
 if(bank){
@@ -68,6 +68,47 @@ if(bank){
             break;
     }
 }
+*/
 
+let productsName = ['Cafetera Moulinex', 'MacBook Pro 2019', 'Samsung Galaxy S10', 'SmartTv Samsung 43"'];
+
+let products = [
+    {
+        name: 'Cafetera Moulinex', 
+        price: 6770, 
+        discount: 0.4
+    },
+    {
+        name: 'MacBook Pro 2019',
+        price: 230000,
+        discount: 0.2
+    },
+    {
+        name: 'Samsung Galaxy S10',
+        price: 70500,
+        discount: 0.1
+    },
+    {
+        name: 'SmartTv Samsung 43"',
+        price: 23200,
+        discount: 0.05
+    }
+];
+
+let length = products.length;
+console.log(products.length);
+
+let twoFirstProducts = products.slice(0,2);
+console.log(twoFirstProducts);
+
+productsName.push('Microondas Phillips');
+console.log(productsName);
+
+let index = productsName.indexOf('Microondas Phillips');
+console.log(index);
+
+for(const product of products) {
+    console.log(product.name);
+};
 
 
