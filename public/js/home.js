@@ -1,5 +1,10 @@
 let response = prompt('Por favor ingresa tu nombre');
-let name = response
+
+let users = [];
+
+if(response){
+    users.push(response);
+}
 
 if(response){
     let number = prompt('Hola ' + response +' ¡Atención! Por favor ingresa un número del 1 al 10');
@@ -42,58 +47,42 @@ if(response){
     }
 }
 
-/*
-let bank = prompt('Ingrese su banco y le contamos los descuentos exclusivos que tenemos el día de hoy para vos :)');
-
-if(bank){
-    switch(bank) {
-        case "santander":
-        case "Santander":
-            alert('¡Disfruta hoy de un descuento del 8% con Banco Santander!');
-            break;
-        case "Galicia":
-        case "galicia":
-            alert('¡Disfruta hoy de un descuento del 8% con Banco Galicia!');
-            break;
-        case "Patagonia":
-        case "patagonia":
-        case "BBVA":
-        case "bbva":
-        case "Macro":
-        case "macro":
-            alert('¡Disfruta hoy de un descuento exclusivo del 5%!');
-            break;
-        default:
-            alert('Disculpa, actualmente no contamos con descuentos para el banco ingresado');
-            break;
-    }
-}
-*/
-
-let productsName = ['Cafetera Moulinex', 'MacBook Pro 2019', 'Samsung Galaxy S10', 'SmartTv Samsung 43"'];
-
 let products = [
     {
+        id: 1,
         name: 'Cafetera Moulinex', 
         price: 6770, 
         discount: 0.4
     },
     {
+        id: 2,
         name: 'MacBook Pro 2019',
         price: 230000,
         discount: 0.2
     },
     {
+        id: 3,
         name: 'Samsung Galaxy S10',
         price: 70500,
         discount: 0.1
     },
     {
+        id: 4,
         name: 'SmartTv Samsung 43"',
         price: 23200,
         discount: 0.05
     }
 ];
+
+function Product(name, price, discount){
+    this.name = name;
+    this.price = price;
+    this.discount = discount;
+};
+
+let iphone12 = new Product('Iphone 12', 68000, 0.02);
+
+console.log(iphone12);
 
 let length = products.length;
 console.log(products.length);
@@ -101,14 +90,24 @@ console.log(products.length);
 let twoFirstProducts = products.slice(0,2);
 console.log(twoFirstProducts);
 
-productsName.push('Microondas Phillips');
-console.log(productsName);
 
-let index = productsName.indexOf('Microondas Phillips');
-console.log(index);
+let newProduct = {name:'Microondas Phillips', price:12000,discount:0.03};
+console.log(newProduct)
+
+products.push(newProduct);
+console.log(products);
+
 
 for(const product of products) {
-    console.log(product.name);
+    if(product.name.includes('MacBook Pro 2019')){
+        let productSearch = product;
+        console.log(productSearch);
+    }
 };
+
+
+console.log(users.includes('Victoria Defagot'));
+
+
 
 
