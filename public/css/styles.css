@@ -31,6 +31,7 @@ header div.top-header p{
 
 header{
     background-color: #EAC926;
+    z-index: 2;
 }
 
 header div.logo,
@@ -41,13 +42,6 @@ header .form{
 header div.logo{
     padding: 10px;
 }
-
-/*header .form{
-    display: flex;
-    align-items: center;
-    padding: 2px;
-    font-size: 11px;
-}*/
 
 header nav{
     font-size: 12px;
@@ -99,27 +93,6 @@ header .form button{
     outline: none;
     padding: 2px;
 }
-
-/*header .form .input{
-    background-color: #FFF;
-    /*border: 1px solid #000; 
-    outline: none;
-    color: #666;
-    padding: 2px;
-    font-size: 11px;
-}
-
-header input.input {
-    width: 90%;
-    font-size: 10px;
-}   
-
-header .form button{
-    background-color: #FFF;
-    border: 1px solid #000;
-    color: #666;
-    width: 10%;
-}*/
 
 header .form button:hover {
     cursor: pointer;
@@ -216,7 +189,7 @@ main section article i,
     color: #39b54a;
 }
 
-main section article i{
+main section article i {
     display: block;
     font-size: 16px;
     padding: 5px;
@@ -232,6 +205,45 @@ main section article i{
 
 main section h3{
     margin: 20px 0px;
+}
+
+main .store {
+    display: flex;
+    color: rgb(160,160,160);
+    right: -15px;
+    padding-bottom: 15px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    border: 1px;
+    border-color: rgb(160,160,160);
+    border-radius: 5px;
+}
+
+main .store i, p {
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+main .store p {
+    font-size: 15px;
+}
+
+main .offers .add-product {
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+
+main .offers .button {
+    display: block;
+    font-size: 18px;
+    color: #39b54a;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #39b54a;
+    background-color: #FFF;
+    border-radius: 50%;
 }
 
 article div.main-article{

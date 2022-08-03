@@ -1,112 +1,97 @@
-let response = prompt('Por favor ingresa tu nombre');
+let store = JSON.parse(localStorage.getItem('store')) ?? [];
+let totalPrice = store.reduce((acumulator, product) => acumulator + product.price, 0);
+document.getElementById('store-quantity').innerHTML = `${store.length}`;
 
-let users = [];
-
-if(response){
-    users.push(response);
-}
-
-if(response){
-    let number = prompt('Hola ' + response +' ¡Atención! Por favor ingresa un número del 1 al 10');
-
-    function noParesDeContarImparesHasta(number){
-    
-        let impares = 0;
-        for(i=0; i<=number; i++){
-           if(i%2!==0){ 
-               impares++
-           }
-        }
-        return impares;
-    }
-
-    if(number){
-        if(number <= 10) {
-        alert('Hemos contado ' + noParesDeContarImparesHasta(number) + ' números impares para llegar al número que ingresaste. Por lo tanto si comprás ' + number + ' productos tenés un descuento del ' + noParesDeContarImparesHasta(number) + '% en el total de tu compra!');
-        }
-    }
-
-} else {
-    let number = prompt('Hola visitante, ¡Atención! Por favor ingresa un número del 1 al 10');
-
-    function noParesDeContarImparesHasta(number){
-    
-        let impares = 0;
-        for(i=0; i<=number; i++){
-           if(i%2!==0){ 
-               impares++
-           }
-        }
-        return impares;
-    }
-    
-    if(number){
-        if(number <= 10) {
-        alert('Hemos contado ' + noParesDeContarImparesHasta(number) + ' números impares para llegar al número que ingresaste. Por lo tanto si comprás ' + number + ' productos tenés un descuento del ' + noParesDeContarImparesHasta(number) + '% en el total de tu compra!');
-        }
-    }
-}
 
 let products = [
     {
         id: 1,
         name: 'Cafetera Moulinex', 
-        price: 6770, 
-        discount: 0.4
+        price: '$6770', 
+        discount: '4% off',
+        img: 'images/img-cafetera-moulinex.jpg',
+        alt: 'Cafetera Moulinex'
     },
     {
         id: 2,
         name: 'MacBook Pro 2019',
-        price: 230000,
-        discount: 0.2
+        price: '$230000',
+        discount: '2% off',
+        img: 'images/img-macbook-pro-2019.jpg',
+        alt: 'MacBook Pro 2019'
     },
     {
         id: 3,
         name: 'Samsung Galaxy S10',
-        price: 70500,
-        discount: 0.1
+        price: '$70500',
+        discount: '1% off',
+        img: 'images/img-samsung-galaxy-s10.jpg', 
+        alt: 'Samsung Galaxy S10'
     },
     {
         id: 4,
         name: 'SmartTv Samsung 43"',
-        price: 23200,
-        discount: 0.05
+        price: '$23200',
+        discount: '5% off',
+        img: 'images/img-tv-samsung-smart.jpg',
+        alt: 'SmartTv Samsung 43"'
     }
 ];
 
-function Product(name, price, discount){
-    this.name = name;
-    this.price = price;
-    this.discount = discount;
-};
+products.forEach((product) => {
 
-let iphone12 = new Product('Iphone 12', 68000, 0.02);
+    const idButton = `add-product${product.id}`;
+    document.getElementById('products').innerHTML +=
 
-console.log(iphone12);
+                    `<article>
+                        <div class="add-product">
+                            <button class="button" id="${idButton}" data-id="${product.id}">+</button>
+                        </div>
+                            <img src="${product.img}" alt="${product.alt}" class="product_img">
+                        <div class="main-article">
+                            <i class="fas fa-truck"></i>
+                            <p class="price"> ${product.price} </p>
+                            <p class="discount"> ${product.discount} </p>
+                            <h4 class="description"> ${product.name} </h4>
+                        </div>
+                    </article>`
+});
 
-let length = products.length;
-console.log(products.length);
+products.forEach((product) => {
 
-let twoFirstProducts = products.slice(0,2);
-console.log(twoFirstProducts);
+    const idButton = `add-product${product.id}`;
 
+    document.getElementById(idButton).addEventListener('click', (e) => {
+        const event = e.target;
+        let productID = event.getAttribute('data-id');
+        
+        let productIndex = products.findIndex(product => product.id === parseInt(productID));
+        let product = products[productIndex];
 
-let newProduct = {name:'Microondas Phillips', price:12000,discount:0.03};
-console.log(newProduct)
+        store.push(product);
+        console.log(store);
 
-products.push(newProduct);
-console.log(products);
+        localStorage.setItem('store', JSON.stringify(store));
+        let totalPrice = store.reduce((acumulator, product) => acumulator + product.price, 0)
 
-
-for(const product of products) {
-    if(product.name.includes('MacBook Pro 2019')){
-        let productSearch = product;
-        console.log(productSearch);
-    }
-};
+        document.getElementById('store-quantity').innerHTML = `${store.length}`;
 
 
-console.log(users.includes('Victoria Defagot'));
+    });
+
+    /*
+    document.getElementById(idButton).addEventListener('click', function() => {
+        store.push(product);
+    });
+    */
+
+});
+
+
+
+
+
+
 
 
 
