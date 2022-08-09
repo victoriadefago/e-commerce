@@ -2,7 +2,6 @@ let store = JSON.parse(localStorage.getItem('store')) ?? [];
 let totalPrice = store.reduce((acumulator, product) => acumulator + product.price, 0);
 document.getElementById('store-quantity').innerHTML = `${store.length}`;
 
-
 let products = [
     {
         id: 1,
