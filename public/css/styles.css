@@ -189,7 +189,7 @@ main section article i,
     color: #39b54a;
 }
 
-main section article i {
+main section .main-article i {
     display: block;
     font-size: 16px;
     padding: 5px;
@@ -202,6 +202,24 @@ main section article i {
     right: 20px;
     top: -15px;
 }
+
+main section article .increase, .decrease {
+    font-size: 25px;
+    border: 0;
+    background-color: #FFF;
+    width: 50px;
+}
+
+
+main section article .units {
+    font-size: 18px;
+}
+
+main section article .counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}   
 
 main section h3{
     margin: 20px 0px;

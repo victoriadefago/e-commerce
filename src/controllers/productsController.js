@@ -9,7 +9,7 @@ const productsController = {
 
     products: function (req, res) {
         res.render(path.join(__dirname, '../views/home'), {products});
-        console.log(products);
+        //console.log(products);
     }
 
 };
