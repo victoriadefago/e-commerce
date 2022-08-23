@@ -1,41 +1,11 @@
+//import { products } from './products.js';
+import products from '../data/products.json' assert {type: 'json'};
+
 let store = JSON.parse(localStorage.getItem('store')) ?? [];
+
 //let totalPrice = store.reduce((acumulator, product) => acumulator + product.price, 0);
 document.getElementById('store-quantity').innerHTML = `${store.length}`;
 
-let products = [
-    {
-        id: 1,
-        name: 'Cafetera Moulinex', 
-        price: '$6770', 
-        discount: '4% off',
-        img: 'images/img-cafetera-moulinex.jpg',
-        alt: 'Cafetera Moulinex'
-    },
-    {
-        id: 2,
-        name: 'MacBook Pro 2019',
-        price: '$230000',
-        discount: '2% off',
-        img: 'images/img-macbook-pro-2019.jpg',
-        alt: 'MacBook Pro 2019'
-    },
-    {
-        id: 3,
-        name: 'Samsung Galaxy S10',
-        price: '$70500',
-        discount: '1% off',
-        img: 'images/img-samsung-galaxy-s10.jpg', 
-        alt: 'Samsung Galaxy S10'
-    },
-    {
-        id: 4,
-        name: 'SmartTv Samsung 43"',
-        price: '$23200',
-        discount: '5% off',
-        img: 'images/img-tv-samsung-smart.jpg',
-        alt: 'SmartTv Samsung 43"'
-    }
-];
 
 products.forEach((product) => {
 
@@ -44,7 +14,7 @@ products.forEach((product) => {
 
     document.getElementById('products').innerHTML +=
 
-                    `<article>
+        `<article>
                         <div class="add-product" id="${addProduct}">
                             <button class="button" id="${idButton}" data-id="${product.id}">+</button>
                         </div>
@@ -66,10 +36,13 @@ products.forEach((product) => {
     const productDecrease = `decrease${product.id}`;
     const productIncrease = `increase${product.id}`;
 
+
     document.getElementById(idButton).addEventListener('click', (e) => {
+
         const event = e.target;
+
         let productID = event.getAttribute('data-id');
-        
+
         let productIndex = products.findIndex(product => product.id === parseInt(productID));
         let product = products[productIndex];
 
@@ -80,6 +53,11 @@ products.forEach((product) => {
 
         document.getElementById('store-quantity').innerHTML = `${store.length}`;
 
+    });
+
+
+    document.getElementById(idButton).addEventListener('click', (e) => {
+
         Swal.fire({
             title: `${product.name}`,
             text: `Producto agregado exitosamente`,
@@ -87,8 +65,8 @@ products.forEach((product) => {
             confirmButtonText: 'Continuar'
         });
 
-    });    
-    
+    });
+
     
     document.getElementById(idButton).addEventListener('click', () => {
 
@@ -128,18 +106,3 @@ function increment() {
     data = data + 1;
     document.querySelector('.units').innerText = data;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
