@@ -189,6 +189,10 @@ main section article i,
     color: #39b54a;
 }
 
+main article .button, .increase, .decrease {
+    cursor: pointer;
+}
+
 main section .main-article i {
     display: block;
     font-size: 16px;

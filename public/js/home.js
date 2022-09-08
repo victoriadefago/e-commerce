@@ -10,7 +10,7 @@ document.getElementById('store-quantity').innerHTML = `${store.length}`;
 products.forEach((product) => {
 
     const idButton = `add-product${product.id}`;
-    const addProduct = `add-product${product.id}`;
+    const addProduct = `add${product.id}`;
 
     document.getElementById('products').innerHTML +=
 
@@ -32,10 +32,9 @@ products.forEach((product) => {
 products.forEach((product) => {
 
     const idButton = `add-product${product.id}`;
-    const addProduct = `add-product${product.id}`;
+    const addProduct = `add${product.id}`;
     const productDecrease = `decrease${product.id}`;
     const productIncrease = `increase${product.id}`;
-
 
     document.getElementById(idButton).addEventListener('click', (e) => {
 
@@ -55,6 +54,12 @@ products.forEach((product) => {
 
     });
 
+    
+    /*
+    document.getElementById(idButton).addEventListener('click', function() => {
+        store.push(product);
+    });
+    */
 
     document.getElementById(idButton).addEventListener('click', (e) => {
 
@@ -70,39 +75,50 @@ products.forEach((product) => {
     
     document.getElementById(idButton).addEventListener('click', () => {
 
-        const productDecrease = `decrease${product.id}`;
-        const productIncrease = `increase${product.id}`;
+        let count = 2;
+        const countProduct = `count${product.id}`;
 
         document.getElementById(addProduct).innerHTML =
                                     
                                 `<div class="counter">
-                                    <button type="button" class="decrease" id="${productDecrease}">
-                                        <i class="fas fa-angle-down"></i>
-                                    </button>
-                                    <span class="units" value="1">1</span>
+                                    <span class="units" id="${countProduct}">1</span>
                                     <button type="button" class="increase" id="${productIncrease}">
                                         <i class="fas fa-angle-up"></i>
                                     </button>
                                 </div>`
 
         document.getElementById(productIncrease).addEventListener('click', () => {
-            document.querySelector('.units').innerHTML = 'test';
+
+            document.getElementById(countProduct).innerHTML = count ++;
+
+            Swal.fire({
+                title: `${product.name}`,
+                text: `Producto agregado exitosamente`,
+                icon: 'success',
+                confirmButtonText: 'Continuar'
+            });
+
+            store.push(product);
+            
+            localStorage.setItem('store', JSON.stringify(store));
+
+            document.getElementById('store-quantity').innerHTML = `${store.length}`;
+
         });
 
-    });
+        /*
+        document.getElementById(productDecrease).addEventListener('click', () => {
+            document.querySelector('.units').innerHTML = count--;
 
+            Swal.fire({
+                title: `${product.name}`,
+                text: `Producto eliminado exitosamente`,
+                icon: 'success',
+                confirmButtonText: 'Continuar'
+            });
+        });
+        */
 
-    /*
-    document.getElementById(idButton).addEventListener('click', function() => {
-        store.push(product);
     });
-    */
 
 });
-
-
-
-function increment() {
-    data = data + 1;
-    document.querySelector('.units').innerText = data;
-}
